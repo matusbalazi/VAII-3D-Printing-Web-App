@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view("contact");
     }
 
     /**
@@ -36,14 +36,14 @@ class ContactController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('contact-page'))
-                        ->withErrors($validator)
-                        ->withInput();
+            return redirect(route('contact.index'))
+                ->withErrors($validator)
+                ->withInput();
         }
 
         Contact::create($validator->validated());
 
-        return redirect(route('contact-page'));
+        return redirect(route('contact.index'));
     }
 
     /**
@@ -52,7 +52,8 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show( $contact) {
+    public function show($contact)
+    {
         //
     }
 

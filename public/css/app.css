@@ -977,9 +977,9 @@ a {
     color: #337ab7;
 }
 
-.social-icons .fa {
-    font-size: 20px;
-    margin-top: 7px;
+.social-icons .fab {
+    font-size: 21px;
+    margin-top: 5px;
 }
 
 .social-icons li:hover .fa-facebook {
@@ -1827,12 +1827,31 @@ a {
     transform: translateY(150px);
     opacity: 0;
     transition: all 2s ease;
-  }
+}
   
-  .reveal.active{
+.reveal.active{
     transform: translateY(0px);
     opacity: 1;
-  }
+}
+
+.logout {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    color: #337ab7;
+    background: #fff;
+    padding: 0.3em 0.6em;
+    margin-top: -0.2em;
+    border-radius: 6px;
+}
+
+.logout:hover {
+    color: #fff;
+    background: #337ab7;
+    padding: 0.3em 0.6em;
+    border-radius: 6px;
+}
 
 
 

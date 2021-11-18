@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DesignController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +19,17 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', [DesignController::class, "homePage"])->name("home-page");
-Route::get('/shop', [DesignController::class, "shopPage"])->name("shop-page");
 Route::get('/services', [DesignController::class, "servicesPage"])->name("services-page");
-Route::get('/contact', [DesignController::class, "contactPage"])->name("contact-page");
+Route::get('/shop/{product}/edit', [ProductController::class, "edit"])->name('shop.edit');
+Route::put('/shop/{product}', [ProductController::class, "update"])->name('shop.update');
+Route::delete('/shop/{product}', [ProductController::class, "destroy"])->name('shop.destroy');
+Route::resource('/shop', ProductController::class)->only(['index', 'store']);
+Route::resource('/contact', ContactController::class)->only(['index', 'store']);
 
-Route::post('/contact', [ContactController::class, "store"])->name("contact-create");
 
+// AUTH ROUTES FOR LOGIN, REGISTER, LOGOUT
 Route::post('/register', [AuthController::class, "register"])->name("auth-register");
 Route::post('/login', [AuthController::class, "login"])->name("auth-login");
-Route::post('/home', [AuthController::class, "logout"])->name("auth-logout");
+Route::post('/logout', [AuthController::class, "logout"])->name("auth-logout");
+
+Route::get('/image/{file}', [FileController::class, "showForUrl"])->name('show-image');

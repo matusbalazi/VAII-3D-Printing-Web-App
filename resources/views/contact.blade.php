@@ -81,7 +81,7 @@
                     </ol>
                 </div>
                 @endif
-        <form action="{{ route("contact-create") }}" method="POST" class="contact-form-containers">
+        <form action="{{ route("contact.store") }}" method="POST" class="contact-form-containers">
             @csrf
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>
             <input type="text" name="surname" value="{{ old('surname') }}" placeholder="Surname" required>

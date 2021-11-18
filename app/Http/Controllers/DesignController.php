@@ -13,19 +13,8 @@ class DesignController extends Controller
         return view("home");
     }
 
-    public function shopPage()
-    {
-        return view("shop");
-    }
-
     public function servicesPage()
     {
         return view("services");
-    }
-
-    public function contactPage()
-    {
-        //return Auth::user();
-        return view("contact");
     }
 }

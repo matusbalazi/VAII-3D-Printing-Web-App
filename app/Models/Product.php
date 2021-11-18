@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['heading', 'price', 'description'];
+
+    public function image()
+    {
+        return $this->hasOne(File::class);
+    }
 }
