@@ -2068,7 +2068,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modalwindow__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modalwindow__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _revealelements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./revealelements */ "./resources/js/revealelements.js");
 /* harmony import */ var _revealelements__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_revealelements__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _passwordchecker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./passwordchecker */ "./resources/js/passwordchecker.js");
+/* harmony import */ var _passwordchecker__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_passwordchecker__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./map */ "./resources/js/map.js");
+/* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_map__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
 
 
 
@@ -2140,6 +2146,34 @@ window.addEventListener('scroll', function () {
 
 /***/ }),
 
+/***/ "./resources/js/map.js":
+/*!*****************************!*\
+  !*** ./resources/js/map.js ***!
+  \*****************************/
+/***/ (() => {
+
+var map;
+var key = "AIzaSyCQ279zqmonSYCmwd5s-0ePPP-6DDDrXko";
+document.addEventListener("DOMContentLoaded", function () {
+  var s = document.createElement("script");
+  document.head.appendChild(s);
+  s.addEventListener("load", function () {
+    //script has loaded
+    console.log("script has loaded");
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: {
+        lat: 48.94550331646864,
+        lng: 20.56362623210377
+      },
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+  });
+  s.src = "https://maps.googleapis.com/maps/api/js?key=".concat("AIzaSyCQ279zqmonSYCmwd5s-0ePPP-6DDDrXko");
+});
+
+/***/ }),
+
 /***/ "./resources/js/modalwindow.js":
 /*!*************************************!*\
   !*** ./resources/js/modalwindow.js ***!
@@ -2180,6 +2214,54 @@ document.addEventListener('keydown', function (e) {
 });
 register.addEventListener('click', function () {
   modalReg.classList.remove('hidden');
+});
+
+/***/ }),
+
+/***/ "./resources/js/passwordchecker.js":
+/*!*****************************************!*\
+  !*** ./resources/js/passwordchecker.js ***!
+  \*****************************************/
+/***/ (() => {
+
+// timeout before a callback is called
+var timeout; // traversing the DOM and getting the input and span using their IDs
+
+var password = document.getElementById('enter-password');
+var strengthBadge = document.getElementById('display-strength'); // The strong and weak password Regex pattern checker
+
+var strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
+var mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
+
+function StrengthChecker(PasswordParameter) {
+  // We then change the badge's color and text based on the password strength
+  if (strongPassword.test(PasswordParameter)) {
+    strengthBadge.style.backgroundColor = "#2FCB96";
+    strengthBadge.textContent = 'Strong';
+  } else if (mediumPassword.test(PasswordParameter)) {
+    strengthBadge.style.backgroundColor = '#337ab7';
+    strengthBadge.textContent = 'Medium';
+  } else {
+    strengthBadge.style.backgroundColor = '#FE888A';
+    strengthBadge.textContent = 'Weak';
+  }
+} // Adding an input event listener when a user types to the  password input 
+
+
+password.addEventListener("input", function () {
+  //The badge is hidden by default, so we show it
+  strengthBadge.style.display = 'block';
+  clearTimeout(timeout); //We then call the StrengChecker function as a callback then pass the typed password to it
+
+  timeout = setTimeout(function () {
+    return StrengthChecker(password.value);
+  }, 500); //Incase a user clears the text, the badge is hidden again
+
+  if (password.value.length !== 0) {
+    strengthBadge.style.display != 'block';
+  } else {
+    strengthBadge.style.display = 'none';
+  }
 });
 
 /***/ }),

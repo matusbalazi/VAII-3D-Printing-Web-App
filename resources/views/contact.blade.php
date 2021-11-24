@@ -90,6 +90,12 @@
             <textarea name="message" rows="6" placeholder="Message" class="contact-textarea">{{ old('message') }}</textarea>
             <button type="submit" name="btn-submit" class="btn-submit">Submit Now</button>
         </form>
+
+        <div class="container-map">
+            <div id="map"></div>
+        </div>
+
     </div>
+    
 </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class AuthController extends Controller
             return redirect()->back();
         }
 
-        return redirect()->back()->withErrors($validator);
+        return redirect()->back()->withErrors(new MessageBag(['password' => ['Email and/or password invalid.']]));
     }
 
     public function logout()

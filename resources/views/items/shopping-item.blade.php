@@ -10,11 +10,11 @@
         @auth
             @if (Auth::user()->is_admin)
                 <br><br><br>
-                <a href="{{ route('shop.edit', $product->id) }}" class="btn-submit">Edit</a>
+                <a href="{{ route('shop.edit', $product->id) }}" class="btn-submit edit">Edit</a>
                 <form action="{{ route('shop.destroy',$product->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn-submit">X</button>
+                    <button type="submit" class="btn-submit delete">X</button>
                 </form>
             @endif
         @endauth

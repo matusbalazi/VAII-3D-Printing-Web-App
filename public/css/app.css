@@ -1168,6 +1168,11 @@ a {
 .shop-text {
     text-align: center;
     margin: 1em;
+    
+}
+
+.shop-text form {
+    height: 0px;
 }
 
 .shop-text span {
@@ -1483,7 +1488,7 @@ a {
         flex-direction: column;
         align-items: flex-end;
         padding: 0;
-        margin: 0;
+        margin: 0;    
     }
 
     .main-header {
@@ -1492,7 +1497,7 @@ a {
     }
 
     .main-header .container {
-        flex-wrap: wrap;
+        flex-wrap: wrap;    
     }
 
     .main-header .container .links {
@@ -1505,6 +1510,7 @@ a {
     .main-header .container .links li {
         padding-top: 10px;
         padding-right: 10px;
+        padding-bottom: 0.25em;
     }
 
     .main-header .container .logo {
@@ -1512,11 +1518,12 @@ a {
     }
 
     .main-header.expand .container .links {
-        max-height: 140px;
+        max-height: 190px;
         padding-bottom: 2em;
     }
 
     .hamburger {
+        cursor: pointer;
         font-size: 24px;
         padding-right: 10px;
         display: block;
@@ -1853,6 +1860,54 @@ a {
     border-radius: 6px;
 }
 
+.shop-text .edit {
+    position: relative;
+    top: -0.6em;
+    left: -2.1em;
+    border: 1px solid #2FCB96;
+    background-color: #2FCB96;
+}
+
+.shop-text .edit:hover {
+    border: 1px solid #2FCB96;
+    background-color: #fff;
+    color: #2FCB96;
+}
+
+.shop-text .delete {
+    position: relative;
+    top: -3.85em;
+    left: 2.4em;
+    margin-top: 1.5em;
+    padding: 0.5em 1.3em;
+    font-weight: 500;
+}
+
+.display-badge {
+    position: absolute;
+    top: 15em;
+    right: 3.5em;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.container-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#map {
+    border: 2px solid #ada9a9;
+    border-radius: 20px;
+    width: 80vw;
+    height: 80vh;
+}
 
 
 
