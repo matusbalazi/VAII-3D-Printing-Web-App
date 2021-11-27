@@ -1496,4 +1496,20 @@ a {
     height: 80vh;
 }
 
+.map-text {
+    position: relative;
+    top: 2em;
+    font-size: 36px;
+    color: #565656;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.btn-edit {
+    position: relative;
+    top: 2em;
+
+}
+
 

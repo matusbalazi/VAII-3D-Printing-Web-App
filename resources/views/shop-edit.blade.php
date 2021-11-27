@@ -48,7 +48,7 @@
                     <input type="text" name="heading" value="{{ old('heading', $product->heading) }}" placeholder="Name" required>
                     <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}" placeholder="Price" required>
                     <textarea name="description" placeholder="Description">{{ old('description', $product->description) }}</textarea>
-                    <button type="submit" name="btn-submit" class="btn-submit">Edit</button>
+                    <button type="submit" name="btn-submit" class="btn-submit btn-edit">Edit</button>
                 </form>
             @endif
         @endauth

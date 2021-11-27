@@ -21,7 +21,7 @@
                     </div>
                     <div class="icon-text">
                         <h3>ADRESS</h3>
-                        <p>Gitobuz technologies, AJ 325, saltlake, sec-2, Kolkata 91</p>
+                        <p>3D Printing Nerds, Letná 45, 052 01 Spišská Nová Ves</p>
                     </div>
                 </div>
                 <div class="address">
@@ -30,8 +30,8 @@
                     </div>
                     <div class="icon-text">
                         <h3>PHONE</h3>
-                        <p>Local: 033-84454566</p>
-                        <p>Mobile: 4566475677</p>
+                        <p>Local: 012/34567890</p>
+                        <p>Mobile: 01234567890</p>
                     </div>
                 </div>
                 <div class="address">
@@ -51,7 +51,7 @@
                     <div class="icon-text">
                         <h3>TIMING</h3>
                         <p>Monday – Saturday</p>
-                        <p>10.30 – 8.30</p>
+                        <p>09.30 – 17.30</p>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,8 @@
             <textarea name="message" rows="6" placeholder="Message" class="contact-textarea">{{ old('message') }}</textarea>
             <button type="submit" name="btn-submit" class="btn-submit">Submit Now</button>
         </form>
+
+        <h1 class="map-text">WHERE YOU CAN FIND US</h1>
 
         <div class="container-map">
             <div id="map"></div>

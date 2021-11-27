@@ -14,7 +14,7 @@
                     @auth
                         <form action="{{ route('auth-logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="login logout">LOGOUT</button>
+                            <button type="submit" class="logout">LOGOUT</button>
                         </form>
                         @else
                             <a href="#" class="login">LOGIN</a>
