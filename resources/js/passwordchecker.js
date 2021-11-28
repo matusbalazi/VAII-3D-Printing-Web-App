@@ -1,50 +1,50 @@
-// timeout before a callback is called
+'use strict';
 
-let timeout;
+// skript - kontrola sily hesla pri registracii
 
-// traversing the DOM and getting the input and span using their IDs
+// casovy limit pred zavolanim spatneho volania
+let delay;
 
 let password = document.getElementById('enter-password')
-let strengthBadge = document.getElementById('display-strength')
+let strengthInfo = document.getElementById('display-strength')
 
-// The strong and weak password Regex pattern checker
-
+// kontrola hesla pomocou regularnych vyrazov
+// silne heslo - min. 8 znakov, min. 1 velke pismeno, min. 1 male pismeno, min. 1 cislica, min. 1 specialny znak
+// priemerne heslo - ak ma heslo aspon 6 znakov a splna vsetky ostatne poziadavky, alebo nema ziadnu cislicu, 
+//                      ale splna ostatne poziadavky
 let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})')
 let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))')
 
+// vyhodnotenie sily hesla
 function StrengthChecker(PasswordParameter){
-    // We then change the badge's color and text based on the password strength
 
+    // zmeni sa farba a text informacneho pola na zaklade sily hesla
     if(strongPassword.test(PasswordParameter)) {
-        strengthBadge.style.backgroundColor = "#2FCB96"
-        strengthBadge.textContent = 'Strong'
+        strengthInfo.style.backgroundColor = "#2FCB96"
+        strengthInfo.textContent = 'Strong'
     } else if(mediumPassword.test(PasswordParameter)){
-        strengthBadge.style.backgroundColor = '#337ab7'
-        strengthBadge.textContent = 'Medium'
+        strengthInfo.style.backgroundColor = '#337ab7'
+        strengthInfo.textContent = 'Medium'
     } else{
-        strengthBadge.style.backgroundColor = '#FE888A'
-        strengthBadge.textContent = 'Weak'
+        strengthInfo.style.backgroundColor = '#FE888A'
+        strengthInfo.textContent = 'Weak'
     }
 }
 
-// Adding an input event listener when a user types to the  password input 
-
+// kontrola, ked pouzivatel zada heslo
 password.addEventListener("input", () => {
 
-    //The badge is hidden by default, so we show it
+    // informacne pole je predvolene skryte, tak ho zobrazi
+    strengthInfo.style.display= 'block'
+    clearTimeout(delay);
 
-    strengthBadge.style.display= 'block'
-    clearTimeout(timeout);
+    // zavolanie funkcie na vyhodnotenie sily po 0,5s
+    delay = setTimeout(() => StrengthChecker(password.value), 500);
 
-    //We then call the StrengChecker function as a callback then pass the typed password to it
-
-    timeout = setTimeout(() => StrengthChecker(password.value), 500);
-
-    //Incase a user clears the text, the badge is hidden again
-
+    // ked pouzivatel vymaze text, informacne pole sa opat skryje
     if(password.value.length !== 0){
-        strengthBadge.style.display != 'block'
+        strengthInfo.style.display != 'block'
     } else{
-        strengthBadge.style.display = 'none'
+        strengthInfo.style.display = 'none'
     }
 });

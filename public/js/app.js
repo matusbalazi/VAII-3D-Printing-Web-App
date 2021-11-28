@@ -2117,9 +2117,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \**************************************/
 /***/ (() => {
 
+"use strict";
+ // skript - posuvanie navigacie pocas scrollovania po stranke
+
 var hamburger = document.getElementById("hamburger-btn");
 var mainHeader = document.getElementById("id-main-header");
-hamburger.addEventListener("click", openCloseMenu);
+hamburger.addEventListener("click", openCloseMenu); // otvorenie alebo zatvorenie hamburger menu 
 
 function openCloseMenu() {
   if (!mainHeader.classList.contains("header-blue")) {
@@ -2129,11 +2132,13 @@ function openCloseMenu() {
   mainHeader.classList.toggle("expand");
 }
 
-var isBlueVariant = mainHeader.classList.contains("header-blue");
+var isBlueVariant = mainHeader.classList.contains("header-blue"); // podfarbenie alebo odfarbenie navigacie od urcitej vysky
+
 window.addEventListener('scroll', function () {
   if (!isBlueVariant) {
     mainHeader.classList.remove("header-blue");
-  }
+  } // pri otvorenom menu a zascrollovani nadol sa menu zabali
+
 
   mainHeader.classList.remove("expand");
 
@@ -2152,15 +2157,21 @@ window.addEventListener('scroll', function () {
   \*****************************/
 /***/ (() => {
 
-var map;
+"use strict";
+ // skript - zobrazenie miesta posobenia firmy v Contact page prostrednictvom Google mapy
+
+var map; // API key - vygenerovany Googlom
+
 var key = "AIzaSyCQ279zqmonSYCmwd5s-0ePPP-6DDDrXko";
 document.addEventListener("DOMContentLoaded", function () {
   var s = document.createElement("script");
-  document.head.appendChild(s);
+  document.head.appendChild(s); // nacitanie skriptu z externej API
+
   s.addEventListener("load", function () {
-    //script has loaded
+    // skript bol nacitany
     console.log("script has loaded");
     map = new google.maps.Map(document.getElementById("map"), {
+      // nastavenie defaultneho miesta zobrazenia (Spisska Nova Ves)
       center: {
         lat: 48.94550331646864,
         lng: 20.56362623210377
@@ -2168,7 +2179,8 @@ document.addEventListener("DOMContentLoaded", function () {
       zoom: 16,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-  });
+  }); // skript z externej API umoznujuci pouzivat Google mapy na zaklade vygenerovaneho API key
+
   s.src = "https://maps.googleapis.com/maps/api/js?key=".concat("AIzaSyCQ279zqmonSYCmwd5s-0ePPP-6DDDrXko");
 });
 
@@ -2181,37 +2193,42 @@ document.addEventListener("DOMContentLoaded", function () {
 /***/ (() => {
 
 "use strict";
-
+ // skript - modalne okno, ktore pouzivatelovi ponukne moznost prihlasit sa alebo zaregistrovat
 
 var modal = document.querySelector('.modal.login');
 var modalReg = document.querySelector('.modal.register');
 var overlay = document.querySelector('.overlay');
 var btnCloseModal = document.querySelectorAll('.close-modal');
 var btnsOpenModal = document.querySelector('.login');
-var register = document.querySelector('.modal p a');
+var register = document.querySelector('.modal p a'); // otvorenie modalneho okna Prihlasenie po kliknuti na tlacidlo Login
+
 btnsOpenModal.addEventListener('click', function () {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
-});
+}); // zatvorenie modalneho okna po kliknuti na krizik
+
 btnCloseModal.forEach(function (e) {
   e.addEventListener('click', function () {
     modal.classList.add('hidden');
     modalReg.classList.add('hidden');
     overlay.classList.add('hidden');
   });
-});
+}); // zatvorenie modalneho okna po kliknuti mimo priestoru modalneho okna
+
 overlay.addEventListener('click', function () {
   modal.classList.add('hidden');
   modalReg.classList.add('hidden');
   overlay.classList.add('hidden');
 });
 document.addEventListener('keydown', function (e) {
+  // zatvorenie modalneho okna po stlaceni tlacidla Esc
   if (e.key === 'Escape' && (!modal.classList.contains('hidden') || !modalReg.classList.contains('hidden'))) {
     modal.classList.add('hidden');
     modalReg.classList.add('hidden');
     overlay.classList.add('hidden');
   }
-});
+}); // otvorenie modalneho okna Registracia po kliknuti na odkaz "register"
+
 register.addEventListener('click', function () {
   modalReg.classList.remove('hidden');
 });
@@ -2224,43 +2241,48 @@ register.addEventListener('click', function () {
   \*****************************************/
 /***/ (() => {
 
-// timeout before a callback is called
-var timeout; // traversing the DOM and getting the input and span using their IDs
+"use strict";
+ // skript - kontrola sily hesla pri registracii
+// casovy limit pred zavolanim spatneho volania
 
+var delay;
 var password = document.getElementById('enter-password');
-var strengthBadge = document.getElementById('display-strength'); // The strong and weak password Regex pattern checker
+var strengthInfo = document.getElementById('display-strength'); // kontrola hesla pomocou regularnych vyrazov
+// silne heslo - min. 8 znakov, min. 1 velke pismeno, min. 1 male pismeno, min. 1 cislica, min. 1 specialny znak
+// priemerne heslo - ak ma heslo aspon 6 znakov a splna vsetky ostatne poziadavky, alebo nema ziadnu cislicu, 
+//                      ale splna ostatne poziadavky
 
 var strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
-var mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
+var mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))'); // vyhodnotenie sily hesla
 
 function StrengthChecker(PasswordParameter) {
-  // We then change the badge's color and text based on the password strength
+  // zmeni sa farba a text informacneho pola na zaklade sily hesla
   if (strongPassword.test(PasswordParameter)) {
-    strengthBadge.style.backgroundColor = "#2FCB96";
-    strengthBadge.textContent = 'Strong';
+    strengthInfo.style.backgroundColor = "#2FCB96";
+    strengthInfo.textContent = 'Strong';
   } else if (mediumPassword.test(PasswordParameter)) {
-    strengthBadge.style.backgroundColor = '#337ab7';
-    strengthBadge.textContent = 'Medium';
+    strengthInfo.style.backgroundColor = '#337ab7';
+    strengthInfo.textContent = 'Medium';
   } else {
-    strengthBadge.style.backgroundColor = '#FE888A';
-    strengthBadge.textContent = 'Weak';
+    strengthInfo.style.backgroundColor = '#FE888A';
+    strengthInfo.textContent = 'Weak';
   }
-} // Adding an input event listener when a user types to the  password input 
+} // kontrola, ked pouzivatel zada heslo
 
 
 password.addEventListener("input", function () {
-  //The badge is hidden by default, so we show it
-  strengthBadge.style.display = 'block';
-  clearTimeout(timeout); //We then call the StrengChecker function as a callback then pass the typed password to it
+  // informacne pole je predvolene skryte, tak ho zobrazi
+  strengthInfo.style.display = 'block';
+  clearTimeout(delay); // zavolanie funkcie na vyhodnotenie sily po 0,5s
 
-  timeout = setTimeout(function () {
+  delay = setTimeout(function () {
     return StrengthChecker(password.value);
-  }, 500); //Incase a user clears the text, the badge is hidden again
+  }, 500); // ked pouzivatel vymaze text, informacne pole sa opat skryje
 
   if (password.value.length !== 0) {
-    strengthBadge.style.display != 'block';
+    strengthInfo.style.display != 'block';
   } else {
-    strengthBadge.style.display = 'none';
+    strengthInfo.style.display = 'none';
   }
 });
 
@@ -2272,17 +2294,24 @@ password.addEventListener("input", function () {
   \****************************************/
 /***/ (() => {
 
-window.addEventListener('scroll', reveal);
+"use strict";
+ // skript - postupne nacitavanie obsahu na Home page pocas scrollovania
+
+window.addEventListener('scroll', reveal); // nacitanie obsahu
 
 function reveal() {
-  var reveals = document.querySelectorAll('.reveal');
+  // pole objektov, ktore sa maju postupne nacitat
+  var reveals = document.querySelectorAll('.reveal'); // prechadzanie pola reveal objektov
 
   for (var i = 0; i < reveals.length; i++) {
-    var windowheight = window.innerHeight;
-    var revealtop = reveals[i].getBoundingClientRect().top;
-    var revealpoint = 150;
+    // vyska okna
+    var windowHeight = window.innerHeight; // pozicia na stranke vzhladom k aktualnemu viewportu
 
-    if (revealtop < windowheight - revealpoint) {
+    var revealTop = reveals[i].getBoundingClientRect().top; // bod, od ktoreho sa ma dana sekcia nacitat
+
+    var revealPoint = 150; // obsah stranky sa nacita az od konkretnej vysky, na ktorej sa pouzivatel nachadza
+
+    if (revealTop < windowHeight - revealPoint) {
       reveals[i].classList.add('active');
     } else {
       reveals[i].classList.remove('active');
