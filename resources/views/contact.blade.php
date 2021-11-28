@@ -69,18 +69,17 @@
 <div class="contact-form">
     <div class="container">
         @if ($errors->any())
-                <div class="w-full mb-4 p-4 error-list">
-                    <h2 class="text-2xl secondary-font text-white font-bold mb-4">Ups... Nevyplnili formulár správne
-                    </h2>
-                    <ol class=" list-disc ml-8 text-white">
-                        @foreach ($errors->all() as $error)
-                        <li>
-                            <p class="has-text-weight-bold text-gray-100">{{ $error }}</p>
-                        </li>
-                        @endforeach
-                    </ol>
-                </div>
-                @endif
+            <div class="error-message">
+                <h2 class="error-heading">Oh, something bad happened &#128551</h2>
+                <ol class="list-of-errors">
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        <p class="error">{{ $error }}</p>
+                    </li>
+                    @endforeach
+                </ol>
+            </div>
+        @endif
         <form action="{{ route("contact.store") }}" method="POST" class="contact-form-containers">
             @csrf
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>

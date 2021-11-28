@@ -1322,7 +1322,7 @@ a {
            object-fit: none;
         -webkit-animation: none;
                 animation: none;
-        top: 50%;
+        top: 40%;
         left: 50%;
     }
     .home-page .logo-image {
@@ -1463,6 +1463,11 @@ a {
     .service-text a {
         margin-left: 0;
     }
+
+    .edit-image {
+        max-height: 300px;
+        max-width: 340%;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -1540,9 +1545,22 @@ a {
     .shop {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .edit-image {
+        max-height: 300px;
+        max-width: 220%;
+    }
+
+    .footer {
+        height: 10em;
+    }
 }
 
 @media screen and (max-width: 700px) {
+    .home-page .text {
+        margin-top: 2em;
+    }
+
     .white-page .model {
         width: 100%;
         margin-bottom: 0;
@@ -1563,6 +1581,12 @@ a {
     
     .service-text h3 {
         font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .footer {
+        height: 25em;
     }
 }
 
@@ -1636,6 +1660,10 @@ a {
     .footer .copyright p {
         padding: 8em 0;
     }
+
+    .btn-edit {
+        right: -2em;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -1645,6 +1673,11 @@ a {
 
     .select-sorting {
         width: 100%;
+    }
+
+    .edit-image {
+        max-height: 300px;
+        max-width: 100%;
     }
 }
 
@@ -1690,7 +1723,7 @@ a {
     }
 
     .footer .container {
-        display:contents;
+        display: contents;
     }
 
     .footer .social-icons {
@@ -1915,7 +1948,7 @@ a {
     font-size: 36px;
     color: #565656;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
     padding-bottom: 0;
 }
 
@@ -1924,6 +1957,41 @@ a {
     top: 2em;
 
 }
+
+.edit-image {
+    margin-top: 3em;
+    overflow: hidden;
+    width: 440%;
+    height: 350px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.error-message {
+    border: 2px solid #E70031;
+    background-color: #FE888A;
+    border-radius: 10px;
+    text-align: left;
+    padding: 1em 1.5em;
+    margin: 1em;
+    z-index: 500;
+}
+
+.error-heading {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 30px;
+    text-align: left;
+}
+
+.list-of-errors li {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+
 
 
 

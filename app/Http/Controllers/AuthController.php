@@ -54,9 +54,12 @@ class AuthController extends Controller
         }
 
         $newUser = User::create($validator->validated());
-
         Auth::login($newUser);
 
-        return redirect()->back();
+        if (Auth::attempt($validator->validated())) {
+            return redirect()->back();
+        }
+
+        return redirect()->back()->withErrors(new MessageBag(['password' => ['Email and/or password invalid.']]));
     }
 }

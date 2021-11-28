@@ -6,6 +6,18 @@
 @section('page-content')
 <div class="white-space">
     <div class="container">
+        @if ($errors->any())
+        <div class="error-message">
+            <h2 class="error-heading">Oh, something bad happened &#128551</h2>
+            <ol class="list-of-errors">
+                @foreach ($errors->all() as $error)
+                <li>
+                    <p class="error">{{ $error }}</p>
+                </li>
+                @endforeach
+            </ol>
+        </div>
+        @endif
         <div class="main-services">
             <div class="service-images">
                 <img src="img/service.png" alt="service">
