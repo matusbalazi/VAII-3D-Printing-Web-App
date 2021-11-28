@@ -1034,6 +1034,15 @@ a {
     .footer .copyright p {
         padding-bottom: 2em;
     }
+
+    .register-form .display-badge {
+        display: block;
+        position: initial;
+    }
+
+    .modal .close-modal {
+        font-size: 2rem;
+    }
 }
 
 @media screen and (max-width: 1150px) {
@@ -1060,6 +1069,11 @@ a {
 
     .service-text a {
         margin-left: 0;
+    }
+
+    .shop .edit-image {
+        width: 350%;
+        height: 300px;
     }
 }
 
@@ -1108,7 +1122,7 @@ a {
     .main-header .container .links li {
         padding-top: 10px;
         padding-right: 10px;
-        padding-bottom: 0.25em;
+        padding-bottom: 0.3em;
     }
 
     .main-header .container .logo {
@@ -1138,6 +1152,15 @@ a {
     .shop {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .footer {
+        height: 12em;
+    }
+
+    .shop .edit-image {
+        width: 220%;
+        height: 200px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -1161,6 +1184,12 @@ a {
     
     .service-text h3 {
         font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .footer {
+        height: 25em;
     }
 }
 
@@ -1234,6 +1263,10 @@ a {
     .footer .copyright p {
         padding: 8em 0;
     }
+
+    .btn-edit {
+        right: -3em;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -1243,6 +1276,11 @@ a {
 
     .select-sorting {
         width: 100%;
+    }
+
+    .shop .edit-image {
+        width: 100%;
+        height: 200px;
     }
 }
 
@@ -1511,12 +1549,26 @@ a {
     top: 2em;
 }
 
+.edit-image {
+    margin-top: 3em;
+    width: 440%;
+    overflow: hidden;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 10px;
+}
+
 .error-message {
     background-color: #FE888A;
     border: 2px solid #E70031;
     border-radius: 10px;
     padding: 1em;
+    margin: 1em;
     z-index: 5000;
+}
+
+.white-space .error-message {
+    margin: 0;
 }
 
 .error-heading {

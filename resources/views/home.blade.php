@@ -11,16 +11,16 @@
             <img src="img/logo_background.png" alt="logo_background" class="logo-background">
         </div>
         @if ($errors->any())
-        <div class="white-space error-message">
-            <h2 class="error-heading">Oh, something bad happened &#128551</h2>
-            <ol class="list-of-errors">
-                @foreach ($errors->all() as $error)
-                <li>
-                    <p class="error">{{ $error }}</p>
-                </li>
-                @endforeach
-            </ol>
-        </div>
+            <div class="white-space error-message">
+                <h2 class="error-heading">Oh, something bad happened &#128551</h2>
+                <ol class="list-of-errors">
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        <p class="error">{{ $error }}</p>
+                    </li>
+                    @endforeach
+                </ol>
+            </div>
         @endif
         <div class="text">
             <h1>We are 3D printing nerds!</h1>

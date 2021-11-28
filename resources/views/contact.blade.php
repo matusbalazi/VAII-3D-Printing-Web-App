@@ -6,7 +6,18 @@
 @section('page-content')
 <div class="white-space">
     <div class="container">
-
+        @if ($errors->any())
+            <div class="error-message">
+                <h2 class="error-heading">Oh, something bad happened &#128551</h2>
+                <ol class="list-of-errors">
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        <p class="error">{{ $error }}</p>
+                    </li>
+                    @endforeach
+                </ol>
+            </div>
+        @endif
         <div class="contact">
             <div class="contact-text">
                 <img src="img/cubic.png" alt="cubic">
@@ -68,18 +79,6 @@
 
 <div class="contact-form">
     <div class="container">
-        @if ($errors->any())
-            <div class="error-message">
-                <h2 class="error-heading">Oh, something bad happened &#128551</h2>
-                <ol class="list-of-errors">
-                    @foreach ($errors->all() as $error)
-                    <li>
-                        <p class="error">{{ $error }}</p>
-                    </li>
-                    @endforeach
-                </ol>
-            </div>
-        @endif
         <form action="{{ route("contact.store") }}" method="POST" class="contact-form-containers">
             @csrf
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>
