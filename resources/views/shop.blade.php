@@ -43,7 +43,7 @@
                 <h3 class="shop-heading">Create new item</h3>
                 <form action="{{ route('shop.store') }}" method="post" class="contact-form-containers create" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="heading" value="{{ old('name') }}" placeholder="Name" required>
+                    <input type="text" name="heading" value="{{ old('heading') }}" placeholder="Name" required>
                     <input type="number" step="0.01" name="price" value="{{ old('price') }}" placeholder="Price" required>
                     <input type="file" name="image" placeholder="image">
                     <textarea name="description" placeholder="Description">{{ old('description') }}</textarea>
