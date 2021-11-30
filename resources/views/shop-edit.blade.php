@@ -40,7 +40,7 @@
         @auth   
             @if (Auth::user()->is_admin)
                 <h3 class="shop-heading">Editing item</h3>
-                <form action="{{ route('shop.update',$product->id) }}" method="post" class="contact-form-containers create" enctype="multipart/form-data">
+                <form name="shopEditForm" action="{{ route('shop.update',$product->id) }}" onsubmit="return validateShopForm(false)" method="post" class="contact-form-containers create" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input type="text" name="heading" value="{{ old('heading', $product->heading) }}" placeholder="Name" required>

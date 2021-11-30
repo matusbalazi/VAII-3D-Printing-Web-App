@@ -79,7 +79,7 @@
 
 <div class="contact-form">
     <div class="container">
-        <form action="{{ route("contact.store") }}" method="POST" class="contact-form-containers">
+        <form name="contactForm" action="{{ route("contact.store") }}" onsubmit="return validateContactForm()" method="POST" class="contact-form-containers">
             @csrf
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>
             <input type="text" name="surname" value="{{ old('surname') }}" placeholder="Surname" required>

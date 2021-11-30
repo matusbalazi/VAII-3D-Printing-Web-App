@@ -41,7 +41,7 @@
         @auth   
             @if (Auth::user()->is_admin)
                 <h3 class="shop-heading">Create new item</h3>
-                <form action="{{ route('shop.store') }}" method="post" class="contact-form-containers create" enctype="multipart/form-data">
+                <form name="shopCreateForm" action="{{ route('shop.store') }}" onsubmit="return validateShopForm(true)" method="post" class="contact-form-containers create" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="heading" value="{{ old('heading') }}" placeholder="Name" required>
                     <input type="number" step="0.01" name="price" value="{{ old('price') }}" placeholder="Price" required>

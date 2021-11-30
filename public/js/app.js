@@ -2072,7 +2072,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _passwordchecker__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_passwordchecker__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./map */ "./resources/js/map.js");
 /* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_map__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./validator */ "./resources/js/validator.js");
+/* harmony import */ var _validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_validator__WEBPACK_IMPORTED_MODULE_5__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -2318,6 +2321,150 @@ function reveal() {
     }
   }
 }
+
+/***/ }),
+
+/***/ "./resources/js/validator.js":
+/*!***********************************!*\
+  !*** ./resources/js/validator.js ***!
+  \***********************************/
+/***/ (() => {
+
+"use strict";
+
+
+window.validateContactForm = function () {
+  var name = document.forms["contactForm"]["name"].value;
+  var surname = document.forms["contactForm"]["surname"].value;
+  var subject = document.forms["contactForm"]["subject"].value;
+  var email = document.forms["contactForm"]["email"].value;
+  var message = document.forms["contactForm"]["message"].value;
+
+  if (name == "") {
+    alert("Name must be filled out!");
+    return false;
+  }
+
+  if (surname == "") {
+    alert("Surname must be filled out!");
+    return false;
+  }
+
+  if (subject == "") {
+    alert("Subject must be filled out!");
+    return false;
+  }
+
+  if (email == "") {
+    alert("Email must be filled out!");
+    return false;
+  }
+
+  if (message == "") {
+    alert("Message must be filled out!");
+    return false;
+  }
+};
+
+window.validateShopForm = function (isCreateForm) {
+  var heading;
+  var price;
+  var image;
+  var description;
+
+  if (isCreateForm == true) {
+    heading = document.forms["shopCreateForm"]["heading"].value;
+    price = document.forms["shopCreateForm"]["price"].value;
+    image = document.forms["shopCreateForm"]["image"].value;
+    description = document.forms["shopCreateForm"]["description"].value;
+
+    if (heading == "") {
+      alert("Heading must be filled out!");
+      return false;
+    }
+
+    if (price == "") {
+      alert("Price must be filled out!");
+      return false;
+    }
+
+    if (image == "") {
+      alert("Image must be chosen!");
+      return false;
+    }
+
+    if (description == "") {
+      alert("Description must be filled out!");
+      return false;
+    }
+  } else {
+    heading = document.forms["shopEditForm"]["heading"].value;
+    price = document.forms["shopEditForm"]["price"].value;
+    description = document.forms["shopEditForm"]["description"].value;
+
+    if (heading == "") {
+      alert("Heading must be filled out!");
+      return false;
+    }
+
+    if (price == "") {
+      alert("Price must be filled out!");
+      return false;
+    }
+
+    if (description == "") {
+      alert("Description must be filled out!");
+      return false;
+    }
+  }
+};
+
+window.validateAuthForm = function (isRegisterForm) {
+  var name;
+  var email;
+  var password;
+  var password_confirmation;
+
+  if (isRegisterForm == true) {
+    name = document.forms["authRegisterForm"]["name"].value;
+    email = document.forms["authRegisterForm"]["email"].value;
+    password = document.forms["authRegisterForm"]["password"].value;
+    password_confirmation = document.forms["authRegisterForm"]["password_confirmation"].value;
+
+    if (name == "") {
+      alert("Name must be filled out!");
+      return false;
+    }
+
+    if (email == "") {
+      alert("Email must be filled out!");
+      return false;
+    }
+
+    if (password == "") {
+      alert("Password must be filled out!");
+      return false;
+    }
+
+    if (password_confirmation == "") {
+      alert("Password confirmation must be filled out!");
+      return false;
+    }
+  } else {
+    email = document.forms["authLoginForm"]["email"].value;
+    password = document.forms["authLoginForm"]["password"].value;
+
+    if (email == "") {
+      alert("Email must be filled out!");
+      return false;
+    }
+
+    if (password == "") {
+      alert("Password must be filled out!");
+      return false;
+    }
+  }
+};
 
 /***/ }),
 

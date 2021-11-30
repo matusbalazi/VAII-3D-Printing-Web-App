@@ -1,7 +1,7 @@
 <div class="modal hidden login">
     <button class="close-modal">&times;</button>
     <h1>LOGIN</h1>
-    <form action="{{ route("auth-login") }}" method="POST" class="login-form">
+    <form name="authLoginForm" action="{{ route("auth-login") }}" onsubmit="return validateAuthForm(false)" method="POST" class="login-form">
         @csrf
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
@@ -14,7 +14,7 @@
 <div class="modal hidden register">
     <button class="close-modal">&times;</button>
     <h1>REGISTER</h1>
-    <form action="{{ route("auth-register") }}" method="POST" class="register-form">
+    <form name="authRegisterForm" action="{{ route("auth-register") }}"onsubmit="return validateAuthForm(true)" method="POST" class="register-form">
         @csrf
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
