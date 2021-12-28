@@ -9,6 +9,7 @@
                 <li><a href="{{ route('home-page') }}" class="{{ Request::routeIs('home-page') ? 'selected' : '' }}">Home</a></li>
                 <li><a href="{{ route('shop.index') }}" class="{{ Request::is('shop*') ? 'selected' : '' }}">Shop</a></li>
                 <li><a href="{{ route('services-page') }}" class="{{ Request::routeIs('services-page') ? 'selected' : '' }}">Services</a></li>
+                <li><a href="{{ route('gallery-page') }}" class="{{ Request::routeIs('gallery-page') ? 'selected' : '' }}">Gallery</a></li>
                 <li><a href="{{ route('contact.index') }}" class="{{ Request::routeIs('contact.index') ? 'selected' : '' }}">Contact</a></li>
                 <li>
                     @auth

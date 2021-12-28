@@ -20,9 +20,11 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [DesignController::class, "homePage"])->name("home-page");
 Route::get('/services', [DesignController::class, "servicesPage"])->name("services-page");
+Route::view('/gallery', 'gallery')->name("gallery-page");
 Route::get('/shop/{product}/edit', [ProductController::class, "edit"])->name('shop.edit');
 Route::put('/shop/{product}', [ProductController::class, "update"])->name('shop.update');
 Route::delete('/shop/{product}', [ProductController::class, "destroy"])->name('shop.destroy');
+// potrebovali sme nabindovat product model
 Route::resource('/shop', ProductController::class)->only(['index', 'store']);
 Route::resource('/contact', ContactController::class)->only(['index', 'store']);
 

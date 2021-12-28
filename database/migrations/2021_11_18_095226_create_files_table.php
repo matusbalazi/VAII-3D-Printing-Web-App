@@ -15,7 +15,8 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('product_id', false, true);
+            $table->bigInteger('product_id', false, true)->nullable();
+            $table->bigInteger('gallery_image_id', false, true)->nullable();
             $table->string('og_name', 191);
             $table->string('file_name', 191);
             $table->string('folder', 191);
@@ -23,6 +24,7 @@ class CreateFilesTable extends Migration
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('gallery_image_id')->references('id')->on('gallery_images')->onDelete('cascade');
         });
     }
 
