@@ -68,17 +68,6 @@ class ProductController extends Controller
         return redirect(route('shop.index'));
     }
 
-    private function generateRandomString($length = 10)
-    {
-        $characters = '123456789abcdefghijklmnopqrstuvwxyz';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        $uniqueid = str_replace(".", "", uniqid('', true));
-        return str_shuffle(strtolower($uniqueid) . $randomString);
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -47,7 +47,7 @@
                     <input type="number" step="0.01" name="price" value="{{ old('price') }}" placeholder="Price" required>
                     <input type="file" name="image" placeholder="image">
                     <textarea name="description" placeholder="Description">{{ old('description') }}</textarea>
-                    <button type="submit" name="btn-submit" class="btn-submit">Create</button>
+                    <button type="submit" name="btn-submit" class="btn-submit btn-create">Create</button>
                 </form>
             @endif
         @endauth

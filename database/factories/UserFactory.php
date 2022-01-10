@@ -18,7 +18,8 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$hPNzRRPoIcq/5OwPs516qumcvKx11Y11S/eAS4rv4Q3U8PMpK8Qzu', // 123456
+            'password' => '123456', // 123456
+            'is_admin' => '1',
             'remember_token' => Str::random(10),
         ];
     }

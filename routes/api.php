@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\GalleryImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/gallery-images', [GalleryImageController::class, 'index'])->name('gallery-images.index');
+Route::middleware('auth')->apiResource('/gallery-images', GalleryImageController::class)->except(['index', 'show']);
+
+Route::get('/user', function (Request $request) {
+    return Auth()->check();
+})->name('api-user');
