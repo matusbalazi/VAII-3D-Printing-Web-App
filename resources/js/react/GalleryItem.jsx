@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-// functional componenet -> predstavuje jeden obrazok v galerii
+// functional component -> predstavuje jeden obrazok v galerii
 function GalleryItem(props) {
     // state na novy nazov obrazku
     // ked sa zmeni state, zmeni sa html 

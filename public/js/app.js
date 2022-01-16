@@ -2450,6 +2450,11 @@ window.validateAuthForm = function (isRegisterForm) {
       alert("Password confirmation must be filled out!");
       return false;
     }
+
+    if (password !== password_confirmation) {
+      alert("Passwords are not same!");
+      return false;
+    }
   } else {
     email = document.forms["authLoginForm"]["email"].value;
     password = document.forms["authLoginForm"]["password"].value;

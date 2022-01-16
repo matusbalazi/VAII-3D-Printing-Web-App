@@ -783,6 +783,7 @@ a {
 .shop-images img {
     object-fit: cover;
     width: 100%;
+    border-radius: 10px;
 }
 
 .shop-text {
@@ -1014,20 +1015,20 @@ a {
     }
 
     .companies .companies-logos {
-        flex-direction: column;
+        flex-direction: column; 
     }
 
     .companies .company-image {
         margin-left: auto;
         margin-right: auto;
-        width: 90%;
+        width: 90%;   
     }
 
     .companies .company-image img {
         margin-left: auto;
         margin-right: auto;
         width: 100%;
-        object-fit: cover;
+        object-fit: cover; 
     }
 
     .footer {
@@ -1053,6 +1054,60 @@ a {
 
     .modal .close-modal {
         font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .navigation {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-header {
+        height: unset;
+        min-height: 120px;
+    }
+
+    .main-header .container {
+        flex-wrap: wrap;
+    }
+
+    .main-header .container .links {
+        max-height: 0;
+        transition: 0.3s;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .main-header .container .links li {
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 0.3em;
+    }
+
+    .main-header .container .logo {
+        padding: 15px 0;
+    }
+
+    .main-header.expand .container .links {
+        max-height: 235px;
+        padding-bottom: 2em;
+        margin-top: -2em;
+    }
+
+    .hamburger {
+        cursor: pointer;
+        font-size: 24px;
+        padding-right: 10px;
+        display: block;
+        margin-left: auto;
+        color: #fff;
+    }
+
+    .hamburger i {
+        font-size: 35px;
     }
 }
 
@@ -1103,55 +1158,6 @@ a {
 
     .contact-icons {
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .navigation {
-        flex-direction: column;
-        align-items: flex-end;
-        padding: 0;
-        margin: 0;
-    }
-
-    .main-header {
-        height: unset;
-        min-height: 120px;
-    }
-
-    .main-header .container {
-        flex-wrap: wrap;
-    }
-
-    .main-header .container .links {
-        max-height: 0;
-        transition: 0.3s;
-        overflow: hidden;
-        width: 100%;
-    }
-
-    .main-header .container .links li {
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-bottom: 0.3em;
-    }
-
-    .main-header .container .logo {
-        padding: 15px 0;
-    }
-
-    .main-header.expand .container .links {
-        max-height: 190px;
-        padding-bottom: 2em;
-    }
-
-    .hamburger {
-        cursor: pointer;
-        font-size: 24px;
-        padding-right: 10px;
-        display: block;
-        margin-left: auto;
-        color: #fff;
     }
 }
 
@@ -1661,25 +1667,86 @@ a {
 }
 
 .btn-gallery-edit {
-    position: relative;
-    left: 6.8em;
+    margin-left: 18%;
+    margin-right: 5%;
     border: 2px solid #2fcb96;
     background-color: #2fcb96;
     padding: 0.5em;
-    width: 20%;
+    width: 30%;
 }
 
 .btn-gallery-edit:hover{
-    position: relative;
-    left: 6.8em;
     color: #2fcb96;
-    padding: 0.5em;
-    width: 20%;
 }
 
 .btn-gallery-delete {
-    position: relative;
-    left: 8em;
     padding: 0.5em;
-    width: 20%;
+    width: 30%;
+}
+
+.message-heading {
+    color: #636363;
+    font-size: 30px;
+    margin-top: 2em;
+    margin-bottom: 0.2em;
+}
+
+.list-of-messages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 0;
+}
+
+.list-of-messages h3 {
+    color: #337ab7;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: underline;
+    margin-bottom: 0.5em;
+}
+
+.contact-message {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #636363;
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
+.message {
+    font-weight: 400;
+    font-style: italic;
+}
+
+@media screen and (max-width: 1300px) {
+    .gallery-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-heading {   
+        margin-bottom: 2em;
+    }
+
+    .gallery-heading h1 {
+        font-size: 54px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .gallery-images {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gallery-image-item img {
+        height: 350px;
+    }
+
+    .gallery-heading {   
+        margin-bottom: 2em;
+    }
+
+    .gallery-heading h1 {
+        font-size: 44px;
+    }
 }

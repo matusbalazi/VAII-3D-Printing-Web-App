@@ -74,6 +74,25 @@
         <div class="text">
             
         </div>
+        @auth   
+            @if (Auth::user()->is_admin) 
+                @if (!$contacts->isEmpty())
+                    <h2 class="message-heading">LIST OF MESSAGES</h2>                   
+                    <div class="list-of-messages">
+                        <div class="contact-message"><h3>Name</h3></div>
+                        <div class="contact-message"><h3>Surname</h3></div>
+                        <div class="contact-message"><h3>Email</h3></div>
+                        <div class="contact-message"><h3>Message</h3></div>       
+                        @foreach ($contacts as $contact)       
+                            <div class="contact-message">{{ $contact->name }}</div>
+                            <div class="contact-message">{{ $contact->surname }}</div>
+                            <div class="contact-message">{{ $contact->email }}</div>
+                            <div class="contact-message message">{{ $contact->message }}</div>
+                        @endforeach
+                    </div>
+                @endif  
+            @endif
+        @endauth
     </div>
 </div>
 

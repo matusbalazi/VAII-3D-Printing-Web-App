@@ -2357,7 +2357,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
- // functional componenet -> predstavuje jeden obrazok v galerii
+ // functional component -> predstavuje jeden obrazok v galerii
 
 
 

@@ -14,7 +14,7 @@
 <div class="modal hidden register">
     <button class="close-modal">&times;</button>
     <h1>REGISTER</h1>
-    <form name="authRegisterForm" action="{{ route("auth-register") }}"onsubmit="return validateAuthForm(true)" method="POST" class="register-form">
+    <form name="authRegisterForm" action="{{ route("auth-register") }}" onsubmit="return validateAuthForm(true)" method="POST" class="register-form">
         @csrf
         <input type="text" name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -43,4 +43,3 @@
 </div>
 
 <div class="overlay hidden"></div>
-</body>

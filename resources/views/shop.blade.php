@@ -45,7 +45,7 @@
                     @csrf
                     <input type="text" name="heading" value="{{ old('heading') }}" placeholder="Name" required>
                     <input type="number" step="0.01" name="price" value="{{ old('price') }}" placeholder="Price" required>
-                    <input type="file" name="image" placeholder="image">
+                    <input type="file" name="image">
                     <textarea name="description" placeholder="Description">{{ old('description') }}</textarea>
                     <button type="submit" name="btn-submit" class="btn-submit btn-create">Create</button>
                 </form>
